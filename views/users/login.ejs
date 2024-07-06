@@ -1,0 +1,110 @@
+<% include("../layouts/header.ejs") %>
+
+<style>
+    body {
+        /* background: #0461bf;  */
+        background: linear-gradient(to right, #3498db, #b13ce7);
+        font-family: 'Playfair Display', serif; 
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: 100px auto;
+        background: linear-gradient(to top, #3550da, #bd78c3);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease-in-out; /* Add a transition effect for smoother transformations */
+    }
+
+    .login-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease-in-out; /* Add a transition effect for smoother border color changes */
+    }
+/* 
+    .login-form input:focus {
+        border-color: #007bff;
+    } */
+
+    /* .login-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #8e1818;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    } */
+
+    .login-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .login-container:hover {
+        transform: scale(1.05);
+    }
+    .text-center{
+        text-align: center;
+        color: #fff;
+    }
+    .btn.btn-primary{
+        color: #fff;
+        background: linear-gradient(to top, #3550da, #bd78c3);
+        cursor: pointer;
+        border-radius: 50px;
+    }
+    .btn.btn-primary:hover{
+        color: black;
+        
+    }
+
+
+    .text-last{
+        /* margin-left: 30px; */
+        margin-top: 10px;
+        color: #dcd2d2;
+        text-align: center;
+    }
+
+    .t{
+
+        color: white;
+
+    }
+    .t:hover{
+
+        color: #3550da;
+
+    }
+
+</style>
+
+<div class="container login-container">
+    <h1 class="text-center">Login</h1>
+
+    <% if (typeof message !== "undefined") { %>
+        <h4 style="color: red; font-style: normal;" class="text-center"><%= message %></h4>
+    <% } %>
+
+    <form class="login-form" action="/login" method="post">
+        <input type="email" name="email" required placeholder="Enter Email">
+        <input type="password" name="password" required placeholder="Enter Password">
+        <input type="submit" class="btn btn-primary" value="Login">    
+        <h4 class="text-last">Don't have an account? <a href="/signup" class="t "> SignUp</a></h4>
+    </form>
+</div>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTn1LO/zCqBRG6e5cLKDA5lbD+L1DEK6u" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-M9bxPCEB1V83S9tR2N7KtDdoW9DJSGbOTblTjV/CvzfuInylhjs+us3gX5x1+pDD" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTn1LO/zCqBRG6e5cLKDA5lbD+L1DEK6u" crossorigin="anonymous"></script>
+
+<% include("../layouts/footer.ejs") %>
+

@@ -1,0 +1,98 @@
+<% include("../layouts/header.ejs") %>
+
+<!-- <h1>Admin Login</h1> -->
+
+
+
+<style>
+  body {
+    background: linear-gradient(to right, #283e9e, #000000);
+    font-family: "Playfair Display", serif;
+  }
+
+  .login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background: linear-gradient(to top, #3550da, #000000);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out; /* Add a transition effect for smoother transformations */
+  }
+
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+  }
+
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+
+  .login-container:hover {
+    transform: scale(1.05);
+  }
+  .text-center {
+    text-align: center;
+    color: #fff;
+  }
+  .btn {
+    color: #fff;
+    background: linear-gradient(to top, #3550da, #bd78c3);
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  .btn:hover {
+    color: black;
+  }
+
+  .text-last {
+    /* margin-left: 30px; */
+    margin-top: 10px;
+    color: #dcd2d2;
+    text-align: center;
+  }
+
+  .t {
+    color: white;
+  }
+  .t:hover {
+    color: #3550da;
+  }
+  .alert-msg{
+    text-align: center;
+    font-size: 15px;
+  }
+
+
+</style>
+
+<div class="container login-container">
+  <h1 class="text-center">Admin Login</h1>
+  
+  
+  <% if(typeof message !== 'undefined'){ %>
+    <h3 class="alert-msg" style="color: red"><%= message %></h3>
+    <% } %>
+    
+
+  <form class="login-form" action="/admin" method="post">
+    <input type="email" name="email" required placeholder="Enter Email" />
+    <input
+      type="password"
+      name="password"
+      required
+      placeholder="Enter Password"
+    />
+    <input type="submit" class="btn" value="Login" />
+    <h4 class="text-last"><a href="" class="t"></a></h4>
+    
+  </form>
+</div>
+
+<% include("../layouts/footer.ejs") %>

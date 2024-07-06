@@ -1,0 +1,169 @@
+<% include("../layouts/header.ejs") %>
+<style>
+    body {
+        background: linear-gradient(to right, #32469e, #000000);
+        color: white; 
+    }
+    .log-btn{
+        background-color: rgb(168, 15, 15);
+        color: #fff;
+        float: right;
+        margin-left: 50px;
+        text-decoration: none;
+        font-size: 20px;
+        margin-right: 20px;
+        margin-top: 10px;
+
+    }
+    .log-btn:hover{
+        background-color: rgb(167, 3, 3);
+        cursor: pointer;
+    }
+    .head-text {
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            font-weight: bold;
+          
+        }
+
+        table {
+            width: 100%;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .list {
+            background-color: #4285f4;
+            /* color: #fff; */
+            font-weight: bold;
+        }
+
+        tr {
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f0f0f05c;
+        }
+        
+        .h{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 2vw;
+        }
+
+        .h>i{
+        cursor: pointer;
+        }
+        .search-container {
+            background: linear-gradient(to right, #32469e, #000000);
+            color: #fff;
+            /* padding: 15px; */
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 30%;
+            padding: 10px;
+            box-sizing: border-box;
+            color: #333; /* Text color for the search box */
+            border: 1px solid #fff; /* Border color for the search box */
+            border-radius: 3px;
+           }
+
+          button {
+            background: linear-gradient(to right, #32469e, #493636);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #32469e, #000000);
+        }
+        .d-flex h{
+            color: white;
+        }
+        
+        
+
+</style>
+
+<div class="container">
+    <a href="/admin"><button type="submit" class="log-btn" >Logout</button></a>
+</div>
+
+<h1 class="head-text">Admin Panel</h1>
+<div class="search-container">
+    <input type="text" id="searchInput"  placeholder="Search ">
+    <button onclick="performSearch()">Search</button>
+</div>
+<table width="50%">
+    <tr class="list">
+        <td>Number</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Verified</td>
+        <td>Options</td>
+        <!-- <td>Actions</td> -->
+    </tr>
+    <!-- Placeholder row, you can replace this with dynamic data -->
+    <% if(users.length > 0){ %>
+        <% for(let i=0; i<users.length; i++){ %>
+            <tr>
+
+                <td><%= i+1 %> </td>
+        
+                <td><%= users[i].name %> </td>
+                <td><%= users[i].email %> </td>
+                <td><%= users[i].phone %> </td>
+                <% if(users[i].is_verified == 0){ %>
+                    <td>Not Verified</td>
+                <% } else { %>
+                    <td>Verified</td>
+                <% } %>
+                <td><div class="d-flex h">
+                    
+                    <!-- <i class="ri-edit-fill"></i>
+                        <a href="/admin/edit-user">></a>
+                        <i class="ri-delete-bin-3-line"></i> -->
+                    
+                    <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a>
+
+                </div></td>
+
+            </tr>
+        <% } %>
+
+    <% } else { %>
+        <tr>
+            <td colspan="4">User not found</td>
+        </tr>
+    <% } %>
+    
+
+</table>
+
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+
+
+<% include("../layouts/footer.ejs") %>
